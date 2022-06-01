@@ -1,42 +1,77 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define SIZE 9
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
-void get_info(char name[][9], int score[][4], char top_scorer[][9]);
+void get_score(int score[][4]);
 
 int main(void) {
-	char name[9][9];
+	char name[9][9] = { "Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Lota" };
 	int score[9][4] = { 0 };
-	char top_scorer[9][9];
 
-	get_info(name, score, top_scorer);
-	int top_size = sizeof(top_scorer) / sizeof(top_scorer[0]);
-	printf("1등: ");
-
-	for (int i = 0; i < top_size; i++) {
-		printf("%s", top_scorer[i]);
-	}
-
-	return 0;
-}
-
-void get_info(char name[][9], int score[][4], char top_scorer[][9]) {
-	int cnt = 0;
-	for (int i = 0; i < SIZE; i++) {
-		scanf("%s %d %d %d %d", &name[i], &score[i][0], &score[i][1], &score[i][2], &score[i][3]);
-
-		if (score[i][3] == 1) {
-			for (int k = 0; k < SIZE; k++) {
-				top_scorer[cnt][k] = name[i][k];
-				cnt += 1;
+	get_score(score);
+	
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			if (i == j)
+				continue;
+			
+			if (score[i][2] == score[j][2]) {
+				if (score[i][3] > score[j][3])
+					score[i][3] = score[j][3];
+				else
+					score[j][3] = score[i][3];
 			}
 		}
 	}
-	printf("\n");
-	printf("       중간     기말     합계     순위\n");
 
-	for (int j = 0; j < SIZE; j++) {
-		printf("%s %5d %5d %5d %5d\n", name[j], score[j][0], score[j][1], score[j][2], score[j][3]);
+	printf("        중간   기말   합계   순위\n");
+	
+	for (int i = 0; i < 9; i++) {
+		printf("%-7s %3d %6d %6d %6d\n", name[i], score[i][0], score[i][1], score[i][2], score[i][3]);
+	}
+}
+
+void get_score(int score[][4]) {
+	int total[9] = { 0 };
+	int rank[9] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int temp;
+
+	srand((unsigned)time(NULL));
+
+	for (int i = 0; i < 9; i++) {
+		score[i][0] = (rand() % 99) + 1;
+		score[i][1] = (rand() % 99) + 1;
+		score[i][2] = score[i][0] + score[i][1];
+		total[i] = score[i][2];
+	}
+
+	for (int j = 0; j < 9; j++) {
+		for (int k = 0; k < 9; k++) {
+
+			temp = 0;
+
+			if (j == k)
+				continue;
+
+			else if (rank[j] < rank[k]) {
+				if (total[j] < total[k]) {
+					temp = rank[j];
+					rank[j] = rank[k];
+					rank[k] = temp;
+				}
+			}
+			else {
+				if (total[j] > total[k]) {
+					temp = rank[j];
+					rank[j] = rank[k];
+					rank[k] = temp;
+				}
+			}
+		}
+	}
+
+	for (int i = 0; i < 9; i++){
+		score[i][3] = rank[i];
 	}
 }
