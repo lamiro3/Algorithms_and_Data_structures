@@ -30,6 +30,19 @@ int main(void) {
 	for (int i = 0; i < 9; i++) {
 		printf("%-7s %3d %6d %6d %6d\n", name[i], score[i][0], score[i][1], score[i][2], score[i][3]);
 	}
+	printf("\n");
+	printf("\n");
+	printf("1µî: ");
+
+	for (int i = 0; i < 9; i++) {
+		if (score[i][3] == 1)
+			printf("%s ", name[i]);
+	}
+
+	printf("\n");
+	printf("=================================");
+
+	return 0;
 }
 
 void get_score(int score[][4]) {
