@@ -1,2 +1,7 @@
-﻿  8.c
+﻿  16.c
+D:\Algorithms_and_Data_structures\Cproject\code\chapter10_prac\16.c(28,26): warning C4020: 'is_blocked': 실제 매개 변수가 너무 많습니다.
+D:\Algorithms_and_Data_structures\Cproject\code\chapter10_prac\16.c(37,26): warning C4020: 'is_blocked': 실제 매개 변수가 너무 많습니다.
+D:\Algorithms_and_Data_structures\Cproject\code\chapter10_prac\16.c(46,26): warning C4020: 'is_blocked': 실제 매개 변수가 너무 많습니다.
+D:\Algorithms_and_Data_structures\Cproject\code\chapter10_prac\16.c(55,26): warning C4020: 'is_blocked': 실제 매개 변수가 너무 많습니다.
+D:\Algorithms_and_Data_structures\Cproject\code\chapter10_prac\16.c(84,45): warning C4029: 선언된 정식 매개 변수 목록이 정의와 다릅니다.
   Project1.vcxproj -> D:\Algorithms_and_Data_structures\Cproject\Project1\x64\Debug\Project1.exe
