@@ -19,12 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\code\chapter10_prac\16.c" />
+    <ClCompile Include="..\..\code\chapter13_prac\10.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{32929ed0-bfde-491b-b2c5-23a43a44d764}</ProjectGuid>
+    <ProjectGuid>{d728324b-b078-4975-9334-e3c94dd035c4}</ProjectGuid>
     <RootNamespace>Project1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
