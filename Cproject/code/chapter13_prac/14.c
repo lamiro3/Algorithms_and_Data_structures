@@ -12,6 +12,10 @@ struct music {
 
 int m_num = 0;
 
+void ClearLineFromReadBuffer(void) {
+	while (getchar() != '\n');
+}
+
 int main(void) {
 	struct music musics[100];
 
@@ -29,13 +33,14 @@ int main(void) {
 
 		if (option == 1) { // buffer 제거할 수 있는 방법 찾기
 			m_num++;
-			printf("제목: ");
+			printf("제목:");
+			ClearLineFromReadBuffer();
 			gets_s(musics[m_num - 1].title, 100);
-			printf("가수: ");
+			printf("가수:");
 			gets_s(musics[m_num - 1].singer, 100);
-			printf("위치: ");
+			printf("위치:");
 			gets_s(musics[m_num - 1].path, 100);
-			printf("장르(0: 가요, 1: 팝, 2: 클래식, 3: 영화음악): ");
+			printf("장르(0: 가요, 1: 팝, 2: 클래식, 3: 영화음악):");
 			scanf("%d", &musics[m_num - 1].genre);
 		}
 
@@ -49,6 +54,7 @@ int main(void) {
 		else if (option == 3) {
 			char search[100];
 			printf("검색할 노래의 제목을 입력하시오: ");
+			ClearLineFromReadBuffer();
 			gets_s(search, 100);
 
 			for (int i = 0; i < m_num; i++) {
