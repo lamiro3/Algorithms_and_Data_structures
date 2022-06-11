@@ -7,7 +7,7 @@ txt = [ ['\0', 0] for _ in range(num) ]
 def get_score(txt, len):
     s = 0
     for i in range(len):
-        s += (alpha.index(txt[i])+1)*(26**(len-i-1)) # 점수를 26진수 꼴로 표현해야 중복이 안됨 (26진수 꼴을 10진수로 나타낸 것)
+        s += (alpha.index(txt[i]))*(26**(len-i-1)) # 점수를 26진수 꼴로 표현해야 중복이 안됨 (26진수 꼴을 10진수로 나타낸 것)
     return s
     
 for n in range(num):
