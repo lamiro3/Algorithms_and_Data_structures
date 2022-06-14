@@ -4,23 +4,20 @@ queue = [i for i in range(1, N+1)]
 cnt = 0
 
 for target in targets:
-    if target <= N/2:
-        if target != queue[0]:
-            cnt += 1
-            queue = queue[1:] + [queue[0]]        
+    while True:
+        if queue.index(target) < len(queue)/2:
+            if target == queue[0]:
+                del queue[0]
+                break
+            else:
+                cnt += 1
+                temp = queue[1:] + [queue[0]] 
+                queue.clear()    
+                queue = temp 
         else:
-            del queue[0]
-            continue
-    else:
-        if target != queue[-1]:
             cnt += 1
-            queue = [queue[-1]] + queue[:-1]
-        else:
-            del queue[-1]
-            continue
+            temp = [queue[-1]] + queue[:-1]
+            queue.clear()
+            queue = temp
             
-print(cnt)
-    
-    
-
-            
+print(cnt)  
