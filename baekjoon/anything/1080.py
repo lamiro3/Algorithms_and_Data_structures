@@ -21,10 +21,36 @@ def isDuplicated(t1, t2):
                 cnt += 1
     return cnt
 
-def detectMat(m1, m2):
+def detectMaxMat(m1, m2):
+    MAX = 0
+    MAX_INDICES = [0, 0]
     for r in range(N-3):
         for c in range(M-3):
             t1 = m1[r:r+3][c:c+3]
             t2 = m2[r:r+3][c:c+3]
-
             score[r][c] = isDuplicated(t1, t2)
+            
+            if MAX < score[r][c]:
+                MAX = score[r][c]
+                MAX_INDICES[0] = r
+                MAX_INDICES[1] = c
+
+    return MAX_INDICES[0], MAX_INDICES[1]
+
+cnt = 0
+
+while True:
+    if isReversed(A, B):
+        break
+    r,c = detectMaxMat(A, B)
+    MaxMat = A[r:r+3][c:c+3]
+    
+    for i in range(r, r+3):
+        for j in range(c, c+3):
+            if MaxMat[i][j] == 0:
+                MaxMat[i][j] = 1
+            else:
+                MaxMat[i][j] = 0
+    cnt += 1
+
+print(cnt)
