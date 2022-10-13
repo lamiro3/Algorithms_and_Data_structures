@@ -29,5 +29,6 @@ for _ in range(N):
     elif C == 3:
         txt.insert(csr-1, O)
         csr += 1
+# 뭐가 문제지?
 
 print(str(txt))
